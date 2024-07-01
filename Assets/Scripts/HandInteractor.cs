@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Globalization;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 
 public class HandInteractor : MonoBehaviour
@@ -12,12 +13,16 @@ public class HandInteractor : MonoBehaviour
     //public Text text;
     public PXR_Hand m_Hand;
 
+
+    //private TextMeshProUGUI text;
+
     private TankSelectorBehavior m_Tank;
     private bool m_IsTankInHand = false;
     private bool Pinch = false;
     void Start()
     {
-        
+        //text = GameObject.Find("Canvas/Text(TMP)").GetComponent<TextMeshProUGUI>();
+        //text.text = "hello text";
     }
 
     // Update is called once per frame
@@ -32,6 +37,10 @@ public class HandInteractor : MonoBehaviour
                 m_Tank.SelectExited();
             }
         }
+
+
+        //SphereCollider col = gameObject.AddComponent<SphereCollider>();
+        //col.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,10 +57,21 @@ public class HandInteractor : MonoBehaviour
                 if (m_Tank != null)
                 {
                     //text.text = "Grab Tank!";
-                    m_Tank.GetComponent<MeshRenderer>().material.color = Color.red;
-                    //m_Tank.transform.parent = transform;
-                    //m_Tank.transform.localPosition = Vector3.zero;
-                    //m_Tank.transform.localRotation = Quaternion.identity;
+                    switch (m_Tank.name) {
+                        case "Cube":
+                            m_Tank.GetComponent<MeshRenderer>().material.color = Color.red;
+                            break;
+                        case "Capsule":
+                            m_Tank.GetComponent<MeshRenderer>().material.color = Color.green;
+                            break;
+                        case "Sphere":
+                            m_Tank.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    //m_Tank.GetComponent<MeshRenderer>().material.color = Color.red;
                     m_IsTankInHand = true;
                     m_Tank.SelectEntered();
                 }

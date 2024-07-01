@@ -14,12 +14,15 @@ public class SelectMode : MonoBehaviour
         if (isSelecting)
         {
             isSelecting = false;
+
         }
         else
         {
             isSelecting = true; 
         }
     }
+
+
     // Start is called before the first frame update
     void Start()
     {

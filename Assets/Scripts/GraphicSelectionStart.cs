@@ -14,6 +14,7 @@ public class GraphicSelectionStart : MonoBehaviour
     // Expose the hit points
     public Vector3 leftPoint;
     public Vector3 rightPoint;
+    //public Vector3 upPoint;
 
     // Pass in text for debug
     public TextMeshProUGUI debugText;
@@ -81,5 +82,12 @@ public class GraphicSelectionStart : MonoBehaviour
 
             SelectGraphic();
         }
+        //else if (m_isSelecting && leftHand.Pinch)
+        //{
+        //    if (Physics.Raycast(m_leftRay, out leftInfo))
+        //    {
+        //        upPoint = leftInfo.point;
+        //    }
+        //}
     }
 }
